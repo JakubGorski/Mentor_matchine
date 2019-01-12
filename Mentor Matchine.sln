@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mentor Matchine", "Mentor Matchine\Mentor Matchine.csproj", "{C63E2515-D9D8-434B-B7EC-6B2EB7E18992}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mentor Matchine.Tests", "Mentor Matchine.Tests\Mentor Matchine.Tests.csproj", "{DE4C3D05-AAB8-44F8-8F0B-E4E6A086B9AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C63E2515-D9D8-434B-B7EC-6B2EB7E18992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C63E2515-D9D8-434B-B7EC-6B2EB7E18992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C63E2515-D9D8-434B-B7EC-6B2EB7E18992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C63E2515-D9D8-434B-B7EC-6B2EB7E18992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE4C3D05-AAB8-44F8-8F0B-E4E6A086B9AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE4C3D05-AAB8-44F8-8F0B-E4E6A086B9AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE4C3D05-AAB8-44F8-8F0B-E4E6A086B9AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE4C3D05-AAB8-44F8-8F0B-E4E6A086B9AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22179FEA-6052-4AEB-A0A9-12CC90492149}
+	EndGlobalSection
+EndGlobal
