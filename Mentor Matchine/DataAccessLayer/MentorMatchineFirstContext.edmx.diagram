@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5283e1e6358a48b6a260ebbb5f4cdbca" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Lang" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Matches" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Mentee" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MenteeLanguage" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Mentor" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MentorLanguage" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MentorPreferences" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Nationality" Width="1.5" PointX="1.5" PointY="14.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__MenteeLan__Langu__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__MentorLan__Langu__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Matches__MenteeI__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Matches__MentorI__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Mentee__National__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__MenteeLan__Mente__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__MentorLan__Mento__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__MentorPre__Mento__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__MentorPre__Natio__3F466844" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

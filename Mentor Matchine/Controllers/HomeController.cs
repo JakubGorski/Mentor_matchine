@@ -20,11 +20,19 @@ namespace Mentor_Matchine.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+/*        public ActionResult Mentor()
         {
-            ViewBag.Message = "Your contact page.";
+            /*ViewBag.Message = "Your contact page.";
 
-            return View();
+            return View("Mentor");
         }
+
+        public ActionResult Mentee()
+        {
+            /* ViewBag.Message = "Your contact page."; 
+
+            return View("Mentee");
+        }
+*/
     }
 }
