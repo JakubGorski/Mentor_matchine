@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Mentor_Matchine.DataAccessLayer.RepositoryPattern
+{
+    public interface IRepository<T>
+    {
+        IEnumerable<T> List { get; }
+        void Add(T entity);
+        T FindById(int id);
+
+    }
+}

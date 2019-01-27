@@ -5,16 +5,31 @@ using System.Web;
 
 namespace Mentor_Matchine.DataAccessLayer.RepositoryPattern
 {
-    public class MenteeLanguagesRepository
+    public class MenteeLanguagesRepository:IRepository<MenteeLanguage>
     {
         private Mentor_MatchineEntities _db;
+        public IEnumerable<MenteeLanguage> List { get; }
 
-        public List<MenteeLanguage> GetMenteeLanguagesByID(int ID)
+        public MenteeLanguagesRepository(Mentor_MatchineEntities db)
         {
-            using (var ctx = new Mentor_MatchineEntities())
-            {
-                return ctx.MenteeLanguage.Where(p => p.MenteeID.Equals(ID)).ToList();
-            }
+            _db = db;
+            List = db.MenteeLanguage;
+        }
+
+        public List<MenteeLanguage> FindByIdAll(int ID)
+        {
+            return _db.MenteeLanguage.Where(p => p.MenteeID.Equals(ID)).ToList();
+        }
+
+        public MenteeLanguage FindById(int ID)
+        {
+            return _db.MenteeLanguage.FirstOrDefault(p => p.MenteeID.Equals(ID));
+        }
+
+        public void Add(MenteeLanguage ml)
+        {
+            _db.MenteeLanguage.Add(ml);
+            _db.SaveChanges();
         }
     }
 }
