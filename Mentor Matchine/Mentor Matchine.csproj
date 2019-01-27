@@ -199,6 +199,11 @@
     <Compile Include="DataAccessLayer\Nationality.cs">
       <DependentUpon>MentorMatchineFirstContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataAccessLayer\RepositoryPattern\MenteeLanguagesRepository.cs" />
+    <Compile Include="DataAccessLayer\RepositoryPattern\MenteeRepository.cs" />
+    <Compile Include="DataAccessLayer\RepositoryPattern\MentorLanguagesRepository.cs" />
+    <Compile Include="DataAccessLayer\RepositoryPattern\MentorPreferencesRepository.cs" />
+    <Compile Include="DataAccessLayer\RepositoryPattern\MentorRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

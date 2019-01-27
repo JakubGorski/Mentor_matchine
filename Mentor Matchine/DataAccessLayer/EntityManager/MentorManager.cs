@@ -9,6 +9,12 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
     public class MentorManager
     {
         private Mentor_MatchineEntities _db;
+        private int GetNextMentorID()
+        {
+            var autoId = _db.Mentor.OrderByDescending(c => c.MentorID).FirstOrDefault();
+            var AutoID = autoId.MentorID + 1;
+            return AutoID;
+        }
         public void AddMentorFromForm(MentorFormModel mentor)
         {
             //todo - add Entities to database based on the filled form
@@ -24,8 +30,7 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
             m.Phone = mentor.Phone;
             m.C_Mentees = mentor.Mentees;
 
-            var autoId = _db.Mentor.OrderByDescending(c => c.MentorID).FirstOrDefault();
-            var AutoID = autoId.MentorID + 1;
+            var AutoID = GetNextMentorID();
 
             foreach (string language in mentor.Languages)
             {

@@ -9,6 +9,14 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
     public class MenteeManager
     {
         private Mentor_MatchineEntities _db;
+
+        private int GetNextMenteeID()
+        {
+            var autoId = _db.Mentee.OrderByDescending(c => c.MenteeID).FirstOrDefault();
+            var AutoID = autoId.MenteeID + 1;
+            return AutoID;
+        }
+
         public void AddMenteeFromForm(MenteeFormModel mentee)
         {
             //Todo - add entities to database based on the filled mentee form
@@ -25,8 +33,8 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
             m.HasMentor = 0;
             //m.Nationality = mentee.Nationality; - pobrac nationality (mamy id z SelectList) i dodac do m nationalityId
             m.NationalityID = Int32.Parse(mentee.Nationality);
-            var autoId = _db.Mentee.OrderByDescending(c => c.MenteeID).FirstOrDefault();
-            var AutoID = autoId.MenteeID + 1;
+
+            var AutoID = GetNextMenteeID();
 
             foreach (string language in mentee.Languages)
             {
