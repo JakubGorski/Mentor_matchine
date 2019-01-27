@@ -208,6 +208,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MatcherLogic\IMatcher.cs" />
+    <Compile Include="Models\MatcherLogic\IPreferences.cs" />
+    <Compile Include="Models\MatcherLogic\MenteeFactory.cs" />
+    <Compile Include="Models\MatcherLogic\MenteeUser.cs" />
+    <Compile Include="Models\MatcherLogic\MentorFactory.cs" />
+    <Compile Include="Models\MatcherLogic\MentorUser.cs" />
+    <Compile Include="Models\MatcherLogic\User.cs" />
+    <Compile Include="Models\MatcherLogic\UserFactory.cs" />
     <Compile Include="Models\ViewModels\MenteeFormModel.cs" />
     <Compile Include="Models\ViewModels\MentorFormModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

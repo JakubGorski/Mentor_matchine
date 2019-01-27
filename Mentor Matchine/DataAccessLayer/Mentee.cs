@@ -32,7 +32,7 @@ namespace Mentor_Matchine.DataAccessLayer
         public string Gender { get; set; }
         public byte HasMentor { get; set; }
         public byte Disability { get; set; }
-    
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Matches> Matches { get; set; }
         public virtual Nationality Nationality { get; set; }

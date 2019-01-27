@@ -43,10 +43,11 @@ namespace Mentor_Matchine.Controllers
             if (ModelState.IsValid)
             {
                 //TODO: save data in db
-                MentorManager mentorManager = new MentorManager();
-                mentorManager.AddMentorFromForm(mentor);
+                
                 using (var db = new Mentor_MatchineEntities())
                 {
+                    MentorManager mentorManager = new MentorManager(db);
+                    mentorManager.AddMentorFromForm(mentor);
                     var languages = db.Lang.Select(l => new {
                         LangID = l.LanguageID,
                         Language = l.SpokenLang

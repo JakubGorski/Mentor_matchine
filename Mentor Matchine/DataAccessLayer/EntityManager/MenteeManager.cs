@@ -46,6 +46,8 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
 
             var AutoID = GetNextMenteeID();
 
+            menteeRepository.Add(m);
+
             foreach (string language in mentee.Languages)
             {
                 var ml = new MenteeLanguage();
@@ -55,8 +57,6 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
                 ml.LanguageID = Int32.Parse(language);
                 menteeLanguagesRepository.Add(ml);
             }
-
-            menteeRepository.Add(m);
         }
     }
 }

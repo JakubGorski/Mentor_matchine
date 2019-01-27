@@ -44,6 +44,7 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
             m.C_Mentees = mentor.Mentees;
 
             var AutoID = GetNextMentorID();
+            mentorRepository.Add(m);
 
             foreach (string language in mentor.Languages)
             {
@@ -64,7 +65,7 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
                     mentorPreferencesRepository.Add(prefNat);
                 }
             }
-            mentorRepository.Add(m);
+            
         }
     }
 }

@@ -42,10 +42,11 @@ namespace Mentor_Matchine.Controllers
         {
             if (ModelState.IsValid)
             {
-                MenteeManager menteeManager = new MenteeManager();
-                menteeManager.AddMenteeFromForm(mentee);
+                
                 using (var db = new Mentor_MatchineEntities())
                 {
+                    MenteeManager menteeManager = new MenteeManager(db);
+                    menteeManager.AddMenteeFromForm(mentee);
                     var languages = db.Lang.Select(l => new
                     {
                         LangID = l.LanguageID,

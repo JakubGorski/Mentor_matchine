@@ -6,7 +6,7 @@ using Mentor_Matchine.DataAccessLayer;
 
 namespace Mentor_Matchine.DataAccessLayer.RepositoryPattern
 {
-    
+
     public class MentorRepository : IRepository<Mentor>
     {
         private Mentor_MatchineEntities _db;
@@ -29,4 +29,5 @@ namespace Mentor_Matchine.DataAccessLayer.RepositoryPattern
             _db.Mentor.Add(entity);
             _db.SaveChanges();
         }
+    }
 }
