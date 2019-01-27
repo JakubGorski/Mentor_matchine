@@ -259,8 +259,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Mentor\Mentor.cshtml" />
+    <Content Include="Views\Mentor\Mentor2.cshtml" />
     <Content Include="Views\Mentee\Mentee.cshtml" />
+    <Content Include="Views\Mentor\Mentor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

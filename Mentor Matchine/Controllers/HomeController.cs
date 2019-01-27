@@ -19,20 +19,5 @@ namespace Mentor_Matchine.Controllers
 
             return View();
         }
-
-/*        public ActionResult Mentor()
-        {
-            /*ViewBag.Message = "Your contact page.";
-
-            return View("Mentor");
-        }
-
-        public ActionResult Mentee()
-        {
-            /* ViewBag.Message = "Your contact page."; 
-
-            return View("Mentee");
-        }
-*/
     }
 }

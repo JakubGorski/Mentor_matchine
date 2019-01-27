@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Mentor_Matchine.Models.ViewModels
 {
@@ -26,16 +27,16 @@ namespace Mentor_Matchine.Models.ViewModels
         [Required(ErrorMessage = "*")]
         [Display(Name = "How Many Mentees can you help?")]
         public int Mentees { get; set; }
-        /*
+        
         [Required(ErrorMessage = "*")]
         [Display(Name = "Are you able to hep someone with disability?")]
         public bool Disability { get; set; }
         [Display(Name = "Gender")]
-        public bool Gender { get; set; }
+        public char Gender { get; set; }
         [Required(ErrorMessage = "*")]
         [Display(Name = "What Languages do you speak?")]
-        public List<string> Languages{get; set;}
+        public string[] Languages { get; set; }
         [Display(Name = "Any preferred nationalities of yur mentee?")]
-        public List<string> Nationalities{get; set;}*/
+        public string[] Nationalities { get; set; }
     }
 }

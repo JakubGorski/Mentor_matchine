@@ -25,12 +25,13 @@ namespace Mentor_Matchine.Models.ViewModels
         public string Email { get; set; }
         [Display(Name = "Phone")]
         public string Phone { get; set; }
-        /*[Display(Name = "Are you disabled?")]
+
+        [Display(Name = "Are you disabled?")]
         public bool Disability { get; set; }
         [Display(Name = "Gender")]
-        public bool Gender { get; set; }
+        public char Gender { get; set; }
         [Required(ErrorMessage = "*")]
         [Display(Name = "What Languages do you speak?")]
-        public List<string> Languages{get; set;}*/
+        public string[] Languages { get; set; }
     }
 }
