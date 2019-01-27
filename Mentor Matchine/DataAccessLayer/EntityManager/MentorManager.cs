@@ -4,11 +4,25 @@ using System.Linq;
 using System.Web.Mvc;
 using Mentor_Matchine.Models.ViewModels;
 using Mentor_Matchine.DataAccessLayer;
+using Mentor_Matchine.DataAccessLayer.RepositoryPattern;
+
 namespace Mentor_Matchine.DataAccessLayer.EntityManager
-{
+{ 
     public class MentorManager
     {
         private Mentor_MatchineEntities _db;
+        private MentorRepository mentorRepository;
+        private MentorLanguagesRepository mentorLanguagesRepository;
+        private MentorPreferencesRepository mentorPreferencesRepository;
+
+        public MentorManager(Mentor_MatchineEntities db)
+        {
+            _db = db;
+            mentorRepository = new MentorRepository(_db);
+            mentorPreferencesRepository = new MentorPreferencesRepository(_db);
+            mentorLanguagesRepository = new MentorLanguagesRepository(_db);
+        }
+        
         private int GetNextMentorID()
         {
             var autoId = _db.Mentor.OrderByDescending(c => c.MentorID).FirstOrDefault();
@@ -18,7 +32,6 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
         public void AddMentorFromForm(MentorFormModel mentor)
         {
             //todo - add Entities to database based on the filled form
-            _db = new Mentor_MatchineEntities();
             var m = new Mentor();
             m.Age = mentor.Age;
             m.Name = mentor.Name;
@@ -39,7 +52,7 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
                 ml.MentorID = AutoID;
                 System.Diagnostics.Debug.WriteLine(language.ToString());
                 ml.LanguageID = Int32.Parse(language);
-                _db.MentorLanguage.Add(ml);
+                mentorLanguagesRepository.Add(ml);
             }
             if (mentor.Nationalities != null)
             {
@@ -48,12 +61,10 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
                     var prefNat = new MentorPreferences();
                     prefNat.MentorID = AutoID;
                     prefNat.NationalityID = Int32.Parse(nationality);
-                    _db.MentorPreferences.Add(prefNat);
+                    mentorPreferencesRepository.Add(prefNat);
                 }
             }
-                
-            _db.Mentor.Add(m);
-            _db.SaveChanges();
+            mentorRepository.Add(m);
         }
     }
 }

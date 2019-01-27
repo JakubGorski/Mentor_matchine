@@ -3,12 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Mentor_Matchine.Models.ViewModels;
+using Mentor_Matchine.DataAccessLayer.RepositoryPattern;
 
 namespace Mentor_Matchine.DataAccessLayer.EntityManager
 {
     public class MenteeManager
     {
         private Mentor_MatchineEntities _db;
+        private MenteeRepository menteeRepository;
+        private MenteeLanguagesRepository menteeLanguagesRepository;
+
+        public MenteeManager(Mentor_MatchineEntities db)
+        {
+            _db = db;
+            menteeRepository = new MenteeRepository(_db);
+            menteeLanguagesRepository = new MenteeLanguagesRepository(_db);
+        }
 
         private int GetNextMenteeID()
         {
@@ -43,11 +53,10 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
                 ml.MenteeID = AutoID;
                 System.Diagnostics.Debug.WriteLine(language.ToString());
                 ml.LanguageID = Int32.Parse(language);
-                _db.MenteeLanguage.Add(ml);
+                menteeLanguagesRepository.Add(ml);
             }
 
-            _db.Mentee.Add(m);
-            _db.SaveChanges();
+            menteeRepository.Add(m);
         }
     }
 }
