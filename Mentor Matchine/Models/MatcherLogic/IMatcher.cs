@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Mentor_Matchine.Models.MatcherLogic
 {
-    interface IMatcher
+    public interface IMatcher
     {
+        List<int> MatchMentor(MentorUser mentorUser);
+        List<int> MatchMentee(MenteeUser menteeUser);
     }
+
+    
+
 }

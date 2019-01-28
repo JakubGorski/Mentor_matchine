@@ -18,7 +18,7 @@ namespace Mentor_Matchine.DataAccessLayer.RepositoryPattern
 
         public List<MentorPreferences> FindByIdAll(int ID)
         {
-            return _db.MentorPreferences.Where(p => p.MentorID.Equals(ID)).ToList();
+            return _db.MentorPreferences.Where(p => p.MentorID == ID).ToList();
         }
 
         public MentorPreferences FindById(int ID)

@@ -7,20 +7,20 @@ using Mentor_Matchine.DataAccessLayer.RepositoryPattern;
 
 namespace Mentor_Matchine.Models.MatcherLogic
 {
-    public class MenteeFactory:UserFactory
+    public class MenteeFactory:UserFactory<Mentee>
     {
-        private Mentee _mentee;
         private MenteeLanguagesRepository _mlr;
+        private IMatcher _matcher;
 
-        public MenteeFactory(Mentee mentee, MenteeLanguagesRepository mlr)
+        public MenteeFactory( MenteeLanguagesRepository mlr, IMatcher matcher)
         {
-            _mentee = mentee;
             _mlr = mlr;
+            _matcher = matcher;
         }
 
-        public override User GetUser()
+        public override User GetUser(Mentee _mentee)
         {
-            var mentee = new MenteeUser(_mentee.Name, _mentee.Surname, _mentee.Email, _mentee.Gender, _mentee.Disability);
+            var mentee = new MenteeUser(_mentee.Name, _mentee.Surname, _mentee.Email, _mentee.Gender, _mentee.Disability, _matcher);
             if (_mentee.Age != null)
                 mentee.Age = (int)_mentee.Age;
             if (_mentee.NationalityID != null)

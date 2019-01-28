@@ -14,18 +14,32 @@ namespace Mentor_Matchine.Models.MatcherLogic
         private string _gender;
         private byte _disability;
         private List<int> _languages;
+        private IMatcher _matcher;
+        private int _id;
 
-        public MenteeUser(string name, string surname, string email, string gender, byte disability)
+        public MenteeUser(string name, string surname, string email, string gender, byte disability, IMatcher matcher)
         {
             _name = name;
             _surname = surname;
             _email = email;
             _gender = gender;
             _disability = disability;
+            _matcher = matcher;
         }
 
         public int Nationality { get; set; }
         public System.DateTime ArrivalDate { get; set; }
+
+        public override List<int> Match()
+        {
+            return _matcher.MatchMentee(this);
+        }
+
+        public override IMatcher Matcher
+        {
+            get { return _matcher; }
+            set { _matcher = value; }
+        }
 
         public override string Name
         {
@@ -54,7 +68,13 @@ namespace Mentor_Matchine.Models.MatcherLogic
         public override int Age
         {
             get { return _age; }
-            set { Age = value; }
+            set { _age = value; }
+        }
+
+        public override int Id
+        {
+            get { return _id; }
+            set { _id = value; }
         }
 
         public override string Gender

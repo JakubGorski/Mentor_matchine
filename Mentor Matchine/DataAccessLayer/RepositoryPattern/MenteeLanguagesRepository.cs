@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mentor_Matchine.Models.MatcherLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,6 +20,11 @@ namespace Mentor_Matchine.DataAccessLayer.RepositoryPattern
         public List<MenteeLanguage> FindByIdAll(int ID)
         {
             return _db.MenteeLanguage.Where(p => p.MenteeID.Equals(ID)).ToList();
+        }
+
+        public List<MenteeLanguage> FindByLangIdAll(int ID)
+        {
+            return _db.MenteeLanguage.Where(p => p.LanguageID==ID).ToList();
         }
 
         public MenteeLanguage FindById(int ID)

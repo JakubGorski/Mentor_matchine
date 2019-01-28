@@ -200,6 +200,7 @@
       <DependentUpon>MentorMatchineFirstContext.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccessLayer\RepositoryPattern\IRepository.cs" />
+    <Compile Include="DataAccessLayer\RepositoryPattern\MatchesRepository.cs" />
     <Compile Include="DataAccessLayer\RepositoryPattern\MenteeLanguagesRepository.cs" />
     <Compile Include="DataAccessLayer\RepositoryPattern\MenteeRepository.cs" />
     <Compile Include="DataAccessLayer\RepositoryPattern\MentorLanguagesRepository.cs" />
@@ -208,12 +209,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MatcherLogic\EmailSender.cs" />
     <Compile Include="Models\MatcherLogic\IMatcher.cs" />
     <Compile Include="Models\MatcherLogic\IPreferences.cs" />
+    <Compile Include="Models\MatcherLogic\MatcherBuilder.cs" />
     <Compile Include="Models\MatcherLogic\MenteeFactory.cs" />
     <Compile Include="Models\MatcherLogic\MenteeUser.cs" />
     <Compile Include="Models\MatcherLogic\MentorFactory.cs" />
     <Compile Include="Models\MatcherLogic\MentorUser.cs" />
+    <Compile Include="Models\MatcherLogic\SimpleMatcher.cs" />
     <Compile Include="Models\MatcherLogic\User.cs" />
     <Compile Include="Models\MatcherLogic\UserFactory.cs" />
     <Compile Include="Models\ViewModels\MenteeFormModel.cs" />

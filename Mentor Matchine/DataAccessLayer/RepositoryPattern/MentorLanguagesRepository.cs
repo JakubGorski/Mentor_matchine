@@ -18,7 +18,18 @@ namespace Mentor_Matchine.DataAccessLayer.RepositoryPattern
 
         public List<MentorLanguage> FindByIdAll(int ID)
         {
-            return _db.MentorLanguage.Where(p => p.MentorID.Equals(ID)).ToList();
+            return _db.MentorLanguage.Where(p => p.MentorID == ID).ToList();
+        }
+
+        public List<MentorLanguage> FindByLangIdAll(int ID)
+        {
+            var l = _db.MentorLanguage.Where(p => p.LanguageID == ID).ToList();
+            //foreach(MentorLanguage ml in l)
+            //{
+             //   System.Diagnostics.Debug.WriteLine(ml.LanguageID +" " + ml.MentorID);
+            //}
+            return l;
+
         }
 
         public MentorLanguage FindById(int ID)

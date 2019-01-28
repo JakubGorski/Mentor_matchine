@@ -7,24 +7,29 @@ using Mentor_Matchine.DataAccessLayer.RepositoryPattern;
 
 namespace Mentor_Matchine.Models.MatcherLogic
 {
-    public class MentorFactory : UserFactory
+    public class MentorFactory : UserFactory<Mentor>
     {
-        private Mentor _mentor;
         private MentorLanguagesRepository _mlr;
         private MentorPreferencesRepository _mpr;
+        private IMatcher _matcher;
 
-        public MentorFactory(Mentor mentor, MentorLanguagesRepository mlr, MentorPreferencesRepository mpr)
+        public MentorFactory(MentorLanguagesRepository mlr, MentorPreferencesRepository mpr, IMatcher matcher)
         {
-            _mentor = mentor;
             _mlr = mlr;
             _mpr = mpr;
+            _matcher = matcher;
         }
 
-        public override User GetUser()
+        public override User GetUser(Mentor _mentor)
         {
-            var mentor = new MentorUser(_mentor.Name, _mentor.Surname, _mentor.Email, _mentor.Gender, _mentor.Disability, _mentor.C_Mentees);
+            var mentor = new MentorUser(_mentor.Name, _mentor.Surname, _mentor.Email, _mentor.Gender, _mentor.Disability, _mentor.C_Mentees, _matcher);
             if (_mentor.Age != null)
+            {
+                System.Diagnostics.Debug.WriteLine("przed set age");
                 mentor.Age = (int)_mentor.Age;
+                System.Diagnostics.Debug.WriteLine("po set age");
+            }
+                
             if (_mentor.StartDate != null)
                 mentor.StartDate = (System.DateTime)_mentor.StartDate;
 

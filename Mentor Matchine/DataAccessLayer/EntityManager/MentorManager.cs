@@ -15,12 +15,12 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
         private MentorLanguagesRepository mentorLanguagesRepository;
         private MentorPreferencesRepository mentorPreferencesRepository;
 
-        public MentorManager(Mentor_MatchineEntities db)
+        public MentorManager(Mentor_MatchineEntities db, MentorRepository mr, MentorPreferencesRepository mpr, MentorLanguagesRepository mlr)
         {
             _db = db;
-            mentorRepository = new MentorRepository(_db);
-            mentorPreferencesRepository = new MentorPreferencesRepository(_db);
-            mentorLanguagesRepository = new MentorLanguagesRepository(_db);
+            mentorRepository = mr;
+            mentorPreferencesRepository = mpr;
+            mentorLanguagesRepository = mlr;
         }
         
         private int GetNextMentorID()
@@ -29,9 +29,8 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
             var AutoID = autoId.MentorID + 1;
             return AutoID;
         }
-        public void AddMentorFromForm(MentorFormModel mentor)
+        public int AddMentorFromForm(MentorFormModel mentor)
         {
-            //todo - add Entities to database based on the filled form
             var m = new Mentor();
             m.Age = mentor.Age;
             m.Name = mentor.Name;
@@ -49,7 +48,6 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
             foreach (string language in mentor.Languages)
             {
                 var ml = new MentorLanguage();
-                //pobierac jakos prawidlowy kolejny id z bd
                 ml.MentorID = AutoID;
                 System.Diagnostics.Debug.WriteLine(language.ToString());
                 ml.LanguageID = Int32.Parse(language);
@@ -65,6 +63,7 @@ namespace Mentor_Matchine.DataAccessLayer.EntityManager
                     mentorPreferencesRepository.Add(prefNat);
                 }
             }
+            return AutoID;
             
         }
     }

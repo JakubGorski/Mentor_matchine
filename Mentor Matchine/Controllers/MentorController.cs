@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Mentor_Matchine.Models.ViewModels;
 using Mentor_Matchine.DataAccessLayer;
 using Mentor_Matchine.DataAccessLayer.EntityManager;
+using Mentor_Matchine.Models.MatcherLogic;
+using Mentor_Matchine.DataAccessLayer.RepositoryPattern;
 
 namespace Mentor_Matchine.Controllers
 {
@@ -41,13 +43,41 @@ namespace Mentor_Matchine.Controllers
         public ActionResult Mentor(MentorFormModel mentor)
         {
             if (ModelState.IsValid)
-            {
-                //TODO: save data in db
-                
+            {              
                 using (var db = new Mentor_MatchineEntities())
                 {
-                    MentorManager mentorManager = new MentorManager(db);
-                    mentorManager.AddMentorFromForm(mentor);
+                    var mlr = new MenteeLanguagesRepository(db);
+                    var mentorlr = new MentorLanguagesRepository(db);
+                    var mpr = new MentorPreferencesRepository(db);
+                    var matchesR = new MatchesRepository(db);
+                    var mr = new MenteeRepository(db);
+                    var mentorR = new MentorRepository(db);
+
+                    var manager = new Director();
+                    var builder = new SimpleMatcherBuilder();
+                    manager.Construct(builder, mlr, mr, matchesR);
+                    var matcher = builder.GetResult();
+
+                    var MentorFactory = new MentorFactory(mentorlr, mpr, matcher);
+                    var email = new EmailSender();
+
+                    MentorManager mentorManager = new MentorManager(db, mentorR, mpr, mentorlr);
+                    int id = mentorManager.AddMentorFromForm(mentor);
+
+                    var mentorUser = MentorFactory.GetUser(mentorR.FindById(id));
+                    mentorUser.Id = id;
+                    var matches = mentorUser.Match();
+
+                    var f = mentorR.FindById(id).C_Mentees;
+                    var emails = new List<String>();
+                    foreach (int i in matches)
+                    {
+                        emails.Add(mr.FindById(i).Email);
+                        f = f - 1;
+                    }
+                    mentorR.FindById(id).C_Mentees = f;
+                    foreach (string e in emails)
+                        email.SendEmail(e);
                     var languages = db.Lang.Select(l => new {
                         LangID = l.LanguageID,
                         Language = l.SpokenLang
